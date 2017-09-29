@@ -1,0 +1,44 @@
+
+
+=================================
+CSE1325 Library Management System
+=================================
+
+Publications
+------------
+(1) Add publication
+(2) List all publications
+(3) Check out publication
+(4) Check in publication
+
+Patrons
+=======
+(5) Add patron
+(6) List all patrons
+
+Utility
+-------
+(9) Help
+(0) Exit
+
+
+
+----------------------------
+List of Library Publications
+----------------------------
+0) "Foundation" by Isaac Asimov, 1942 (adult fiction book) ISBN: 0385177259
+1) "Foundation and Empire" by Isaac Asimov, 1943 (adult fiction book) ISBN: 0385177259
+2) "Second Foundation" by Isaac Asimov, 1944 (adult fiction book) ISBN: 0385177259
+Checked out to Curly (817-555-2222)
+3) "War of the Worlds" by Jeff Wayne, 1977 (teen performance audio) ISBN: 9780711969148
+4) "Willy Wonka and the Chocolate Factory" by Roald Dahl, 1971 (children performance video) ISBN: 0142410314
+
+
+-----------------------
+List of Beloved Patrons
+-----------------------
+0) Larry (817-555-1111)
+1) Curly (817-555-2222)
+2) Moe (817-555-3333)
+
+Verify output for pass or fail
