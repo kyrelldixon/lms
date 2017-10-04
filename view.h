@@ -8,6 +8,7 @@ class View {
   public:
     View(Library& lib) : library(lib) { }
     void show_menu();
+    int select_from_menu();
     void list_publications();
     void list_patrons();
     void help();

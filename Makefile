@@ -13,14 +13,17 @@ main: main.o controller.o view.o library.o publication.o patron.o dialogs.o
 main.o: main.cpp controller.h library.h dialogs.h
 	$(CXX) $(CXXFLAGS) -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-controller.o: controller.cpp controller.h library.h view.h publication.h patron.h genre.h media.h age.h
-	$(CXX) $(CXXFLAGS) -c controller.cpp
+controller.o: controller.cpp controller.h library.h view.h publication.h patron.h genre.h media.h age.h dialogs.h
+	$(CXX) $(CXXFLAGS) -c controller.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+
+view.o: view.cpp view.h library.h dialogs.h
+	$(CXX) $(CXXFLAGS) -c view.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
 test_view: test_view.o controller.o view.o library.o publication.o patron.o
-	$(CXX) $(CXXFLAGS) -o test_view test_view.o controller.o view.o library.o publication.o patron.o
+	$(CXX) $(CXXFLAGS) -o test_view test_view.o controller.o view.o library.o publication.o patron.o 
 
 test_view.o: test_view.cpp view.h patron.h publication.h library.h
-	$(CXX) $(CXXFLAGS) -c test_view.cpp
+	$(CXX) $(CXXFLAGS) -c test_view.cpp`/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
 test_library: test_library.o library.o patron.o publication.o view.o
 	$(CXX) $(CXXFLAGS) -o test_library test_library.cpp library.o patron.o publication.o

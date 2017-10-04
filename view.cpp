@@ -32,6 +32,10 @@ Utility
   cout << menu;
 }
 
+int View::select_from_menu() {
+  return 0;
+}
+
 void View::list_publications() {
   string header = R"(
 ----------------------------
