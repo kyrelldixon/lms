@@ -2,6 +2,7 @@
 #define __VIEW_H 201609
  
 #include "library.h"
+#include "dialogs.h"
 
 class View {
   public:
