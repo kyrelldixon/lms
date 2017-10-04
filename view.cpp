@@ -7,6 +7,7 @@ using namespace std;
 int View::select_from_menu() {
   string text;    // Temp for holding user's input
   int guess = 0;
+  string title = "Main Menu";
   string menu = R"(
 =================================
 CSE1325 Library Management System
@@ -31,17 +32,11 @@ Utility
 
 )";
 
-  string title = R"(
-=================================
-CSE1325 Library Management System
-=================================
-)";
-
   text = Dialogs::input(menu, title);
   if (text == "CANCEL") return guess;
 
   guess = atoi(text.c_str());
-  
+
   return guess;
 }
 
@@ -71,6 +66,7 @@ List of Beloved Patrons
 }
 
 void View::help() {
+  string title = "Help";
   string helptext = R"(
 The LMS tracks publication assets for a library, including those who
 check out and return those publications.
@@ -91,7 +87,7 @@ check out and return those publications.
 
 Use the '99' command to pre-populate test data.
   )";
-  cout << helptext << endl;
+  Dialogs::message(helptext, title);
 }
 
 
