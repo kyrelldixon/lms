@@ -4,7 +4,9 @@
 
 using namespace std;
 
-void View::show_menu() {
+int View::select_from_menu() {
+  string text;    // Temp for holding user's input
+  int guess = 0;
   string menu = R"(
 =================================
 CSE1325 Library Management System
@@ -29,11 +31,18 @@ Utility
 
 )";
 
-  cout << menu;
-}
+  string title = R"(
+=================================
+CSE1325 Library Management System
+=================================
+)";
 
-int View::select_from_menu() {
-  return 0;
+  text = Dialogs::input(menu, title);
+  if (text == "CANCEL") return guess;
+
+  guess = atoi(text.c_str());
+  
+  return guess;
 }
 
 void View::list_publications() {

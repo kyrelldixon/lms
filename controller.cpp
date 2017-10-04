@@ -14,10 +14,7 @@ using namespace std;
 void Controller::cli() {
   int cmd = -1;
   while (cmd != 0) {
-    view.show_menu();
-    cout << "Command? ";
-    cin >> cmd;
-    cin.ignore(); // consume \n
+    cmd = view.select_from_menu();
     execute_cmd(cmd);
   }
 }
