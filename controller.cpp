@@ -25,29 +25,11 @@ void Controller::execute_cmd(int cmd) {
     int genre, media, age;
 
     title = view.get_title();
-
     author = view.get_author();
-
     copyright = view.get_copyright();
-
-    for (int i = 0; i < Genre::num_genres; ++i) 
-      cout << "  " << i << ") " << Genre(i).to_string() << endl;
-    cout << "Genre? ";
-    cin >> genre;
-    cin.ignore(); // consume \n
-
-    for (int i = 0; i < Media::num_media; ++i) 
-      cout << "  " << i << ") " << Media(i).to_string() << endl;
-    cout << "Media? ";
-    cin >> media;
-    cin.ignore(); // consume \n
-
-    for (int i = 0; i < Age::num_ages; ++i) 
-      cout << "  " << i << ") " << Age(i).to_string() << endl;
-    cout << "Age? ";
-    cin >> age;
-    cin.ignore(); // consume \n
-
+    genre = view.get_genre();
+    media = view.get_media();
+    age = view.get_age();
     isbn = view.get_isbn();
 
     library.add_publication(Publication(title, author, copyright, genre, media, age, isbn));

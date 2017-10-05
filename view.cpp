@@ -162,6 +162,60 @@ string View::get_copyright() {
   return copyright;
 }
 
+int View::get_genre() {
+  string dialog_title = "Genre";
+  string msg = "";
+  string text;
+  int genre = 0;
+
+  for (int i = 0; i < Genre::num_genres; ++i) {
+    msg += "  " + to_string(i) + ") " + Genre(i).to_string() + "\n";
+  }
+
+  text = Dialogs::input(msg, dialog_title);
+
+  if (text == "CANCEL") return genre;
+  genre = atoi(text.c_str());
+
+  return genre;
+}
+
+int View::get_media() {
+  string dialog_title = "Media";
+  string msg = "";
+  string text;
+  int media = 0;
+
+  for (int i = 0; i < Media::num_media; ++i) {
+    msg += "  " + to_string(i) + ") " + Media(i).to_string() + "\n";
+  }
+
+  text = Dialogs::input(msg, dialog_title);
+
+  if (text == "CANCEL") return media;
+  media = atoi(text.c_str());
+
+  return media;
+}
+
+int View::get_age() {
+  string dialog_title = "Age";
+  string msg = "";
+  string text;
+  int age = 0;
+
+  for (int i = 0; i < Age::num_ages; ++i) {
+    msg += "  " + to_string(i) + ") " + Age(i).to_string() + "\n";
+  }
+
+  text = Dialogs::input(msg, dialog_title);
+
+  if (text == "CANCEL") return age;
+  age = atoi(text.c_str());
+
+  return age;
+}
+
 string View::get_isbn() {
   string dialog_title = "Title";
   string msg = "Enter ISBN";
