@@ -6,7 +6,7 @@ using namespace std;
 
 int View::select_from_menu() {
   string text;    // Temp for holding user's input
-  int guess = 0;
+  int choice = 0;
   string title = "Main Menu";
   string menu = R"(
 =================================
@@ -33,11 +33,11 @@ Utility
 )";
 
   text = Dialogs::input(menu, title);
-  if (text == "CANCEL") return guess;
+  if (text == "CANCEL") return choice;
 
-  guess = atoi(text.c_str());
+  choice = atoi(text.c_str());
 
-  return guess;
+  return choice;
 }
 
 void View::list_publications() {
@@ -53,6 +53,36 @@ void View::list_patrons() {
   string msg = get_patrons();
 
   Dialogs::message(msg, title);
+}
+
+int View::select_publication() {
+  string title = "Add Publication";
+  string msg = get_publications();
+  string text;
+  int choice = 0;
+
+  text = Dialogs::input(msg, title);
+
+  if (text == "CANCEL") return choice;
+  
+  choice = atoi(text.c_str());
+  
+  return choice;
+}
+
+int View::select_patron() {
+  string title = "Add Patron";
+  string msg = get_patrons();
+  string text;
+  int choice = 0;
+
+  text = Dialogs::input(msg, title);
+
+  if (text == "CANCEL") return choice;
+  
+  choice = atoi(text.c_str());
+  
+  return choice;
 }
 
 void View::help() {

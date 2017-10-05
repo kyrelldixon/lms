@@ -9,6 +9,7 @@ class View {
     View(Library& lib) : library(lib) { }
     int select_from_menu();
     int select_publication();
+    int select_patron();
     void list_publications();
     void list_patrons();
     void help();

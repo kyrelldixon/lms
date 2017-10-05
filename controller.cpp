@@ -62,15 +62,8 @@ void Controller::execute_cmd(int cmd) {
  } else if (cmd == 3) { // Check out publication
     int pub, pat;
 
-    view.list_publications();
-    cout << "Publication number? ";
-    cin >> pub;
-    cin.ignore(); // consume \n
-
-    view.list_patrons();
-    cout << "Patron number? ";
-    cin >> pat;
-    cin.ignore(); // consume \n
+    pub = view.select_publication();
+    pat = view.select_patron();
 
     try {
       library.check_out(pub, pat);
