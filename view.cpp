@@ -4,10 +4,17 @@
 
 using namespace std;
 
+void View::show_error(string error) {
+  string title = "ERROR";
+
+  Dialogs::message(error, title);
+}
+
 int View::select_from_menu() {
   string text;    // Temp for holding user's input
   int choice = 0;
   string title = "Main Menu";
+  string error;
   string menu = R"(
 =================================
 CSE1325 Library Management System
@@ -32,11 +39,23 @@ Utility
 
 )";
 
-  text = Dialogs::input(menu, title);
-  if (text == "CANCEL") return choice;
-
-  choice = atoi(text.c_str());
-
+  do {
+    text = Dialogs::input(menu, title);
+    if (text == "CANCEL" || text == "99") break;
+  
+    try {
+      choice = stoi(text.c_str());
+    } catch(invalid_argument) {
+      error = "Not a number!";
+      show_error(error);
+      cerr << "ERROR: " << error << endl;
+    }
+    if (choice < 0 || choice > 9) {
+      error = "Invalid command - enter 9 for help";
+      show_error(error);
+    }
+  } while (choice < 0 || choice > 9);
+  
   return choice;
 }
 

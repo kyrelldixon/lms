@@ -12,6 +12,7 @@ class View {
     int select_patron();
     void list_publications();
     void list_patrons();
+    void show_error(string error);
     void help();
 
     // Add publication methods
