@@ -41,7 +41,7 @@ Utility
 
   do {
     text = Dialogs::input(menu, title);
-    if (text == "CANCEL" || text == "99") break;
+    if (text == "CANCEL") break;
   
     try {
       choice = stoi(text.c_str());
@@ -50,11 +50,15 @@ Utility
       show_error(error);
       cerr << "ERROR: " << error << endl;
     }
-    if (choice < 0 || choice > 9) {
+
+    if (choice < 0 || (choice > 9 && choice != 99)) {
       error = "Invalid command - enter 9 for help";
       show_error(error);
     }
-  } while (choice < 0 || choice > 9);
+
+    if (choice == 99) break; // triggers library.easter_egg()
+
+  } while (choice < 0 || (choice > 9 && choice != 99));
   
   return choice;
 }
@@ -77,30 +81,52 @@ void View::list_patrons() {
 int View::select_publication() {
   string title = "Add Publication";
   string msg = get_publications();
-  string text;
+  string text, error;
   int choice = 0;
 
-  text = Dialogs::input(msg, title);
+  do {
+    text = Dialogs::input(msg, title);
+    if (text == "CANCEL") break;
+  
+    try {
+      choice = stoi(text.c_str());
+    } catch(invalid_argument) {
+      error = "Not a number!";
+      show_error(error);
+      cerr << "ERROR: " << error << endl;
+    }
+    if (choice < 0 || choice > library.number_of_publications() - 1) {
+      error = "Invalid entry, out of bounds";
+      show_error(error);
+    }
+  } while (choice < 0 || choice > 9);
 
-  if (text == "CANCEL") return choice;
-  
-  choice = atoi(text.c_str());
-  
   return choice;
 }
 
 int View::select_patron() {
   string title = "Add Patron";
   string msg = get_patrons();
-  string text;
+  string text, error;
   int choice = 0;
 
-  text = Dialogs::input(msg, title);
+  do {
+    text = Dialogs::input(msg, title);
+    if (text == "CANCEL") break;
+  
+    try {
+      choice = stoi(text.c_str());
+    } catch(invalid_argument) {
+      error = "Not a number!";
+      show_error(error);
+      cerr << "ERROR: " << error << endl;
+    }
+    if (choice < 0 || choice > library.number_of_patrons() - 1) {
+      error = "Invalid entry, out of bounds";
+      show_error(error);
+    }
+  } while (choice < 0 || choice > 9);
 
-  if (text == "CANCEL") return choice;
-  
-  choice = atoi(text.c_str());
-  
   return choice;
 }
 
@@ -130,7 +156,7 @@ Use the '99' command to pre-populate test data.
 }
 
 string View::get_publications() {
-  string publications{""};
+  string publications = "";
   
   for (int i=0; i<library.number_of_publications(); ++i) {
     publications += to_string(i) + ") " + library.publication_to_string(i) + "\n";
@@ -140,7 +166,7 @@ string View::get_publications() {
 }
 
 string View::get_patrons() {
-  string patrons{""};
+  string patrons = "";
   
   for (int i=0; i<library.number_of_patrons(); ++i) {
     patrons += to_string(i) + ") " + library.patron_to_string(i) + "\n";
