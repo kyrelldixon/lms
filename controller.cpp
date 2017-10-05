@@ -60,10 +60,8 @@ void Controller::execute_cmd(int cmd) {
     view.list_publications();
 
  } else if (cmd == 3) { // Check out publication
-    int pub, pat;
-
-    pub = view.select_publication();
-    pat = view.select_patron();
+    int pub = view.select_publication();
+    int pat = view.select_patron();
 
     try {
       library.check_out(pub, pat);
@@ -72,11 +70,7 @@ void Controller::execute_cmd(int cmd) {
     }
     
  } else if (cmd == 4) { // Check in publication
-    int pub;
-    view.list_publications();
-    cout << "Publication number? ";
-    cin >> pub;
-    cin.ignore(); // consume \n
+    int pub = view.select_publication();
 
     try {
       library.check_in(pub);
