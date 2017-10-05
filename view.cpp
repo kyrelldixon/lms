@@ -79,7 +79,7 @@ void View::list_patrons() {
 }
 
 int View::select_publication() {
-  string title = "Add Publication";
+  string title = "Check In/Check Out";
   string msg = get_publications();
   string text, error;
   int choice = 0;
