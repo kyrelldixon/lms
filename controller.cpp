@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void Controller::cli() {
+void Controller::gui() {
   int cmd = -1;
   while (cmd != 0) {
     cmd = view.select_from_menu();
@@ -38,6 +38,11 @@ void Controller::execute_cmd(int cmd) {
     view.list_publications();
 
  } else if (cmd == 3) { // Check out publication
+    if (library.number_of_publications() == 0) {
+      view.show_error("There are currently no publications");
+      return;
+    }
+  
     int pub = view.select_publication();
     int pat = view.select_patron();
 
@@ -46,8 +51,15 @@ void Controller::execute_cmd(int cmd) {
     } catch (Publication::Invalid_transaction e) {
       cerr << "ERROR: That publication is already checked out!" << endl;
     }
+
+    
     
  } else if (cmd == 4) { // Check in publication
+    if (library.number_of_publications() == 0) {
+      view.show_error("There are currently no publications");
+      return;
+    }
+  
     int pub = view.select_publication();
 
     try {

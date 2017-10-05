@@ -7,7 +7,7 @@
 class Controller {
   public:
     Controller (Library& lib) : library(lib), view(View(library)) { }
-    void cli();
+    void gui();
     void execute_cmd(int cmd);
   private:
     Library& library; 

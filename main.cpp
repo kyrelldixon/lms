@@ -8,5 +8,5 @@ int main(int argc, char *argv[]) {
   
   Library library;
   Controller controller(library);
-  controller.cli();
+  controller.gui();
 }
