@@ -8,10 +8,12 @@ class View {
   public:
     View(Library& lib) : library(lib) { }
     int select_from_menu();
+    int select_publication();
     void list_publications();
     void list_patrons();
     void help();
   private:
-    Library& library; 
+    Library& library;
+    string get_publications();
 };
 #endif

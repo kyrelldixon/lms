@@ -41,15 +41,10 @@ Utility
 }
 
 void View::list_publications() {
-  string header = R"(
-----------------------------
-List of Library Publications
-----------------------------
-)";
-  cout << header;
-  for (int i=0; i<library.number_of_publications(); ++i) {
-    cout << i << ") " << library.publication_to_string(i) << endl;
-  }
+  string title = "List of Library Publications";
+  string msg = get_publications();
+
+  Dialogs::message(msg, title);
 }
 
 
@@ -90,4 +85,12 @@ Use the '99' command to pre-populate test data.
   Dialogs::message(helptext, title);
 }
 
+string View::get_publications() {
+  string publications{""};
+  
+  for (int i=0; i<library.number_of_publications(); ++i) {
+    publications += to_string(i) + ") " + library.publication_to_string(i) + "\n";
+  }
 
+  return publications;
+}
