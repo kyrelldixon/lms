@@ -49,15 +49,10 @@ void View::list_publications() {
 
 
 void View::list_patrons() {
-  string header = R"(
------------------------
-List of Beloved Patrons
------------------------
-)";
-  cout << header;
-  for (int i=0; i<library.number_of_patrons(); ++i) {
-    cout << i << ") " << library.patron_to_string(i) << endl;
-  }
+  string title = "List of Beloved Patrons";
+  string msg = get_patrons();
+
+  Dialogs::message(msg, title);
 }
 
 void View::help() {
@@ -93,4 +88,14 @@ string View::get_publications() {
   }
 
   return publications;
+}
+
+string View::get_patrons() {
+  string patrons{""};
+  
+  for (int i=0; i<library.number_of_patrons(); ++i) {
+    patrons += to_string(i) + ") " + library.patron_to_string(i) + "\n";
+  }
+
+  return patrons;
 }

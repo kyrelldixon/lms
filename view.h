@@ -15,5 +15,6 @@ class View {
   private:
     Library& library;
     string get_publications();
+    string get_patrons();
 };
 #endif
