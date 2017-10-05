@@ -129,3 +129,67 @@ string View::get_patrons() {
 
   return patrons;
 }
+
+// Add publication methods
+
+string View::get_title() {
+  string dialog_title = "Title";
+  string msg = "Enter Title";
+  string title;
+
+  title = Dialogs::input(msg, dialog_title);
+
+  return title;
+}
+
+string View::get_author() {
+  string dialog_title = "Author";
+  string msg = "Enter Author";
+  string author;
+
+  author = Dialogs::input(msg, dialog_title);
+
+  return author;
+}
+
+string View::get_copyright() {
+  string dialog_title = "Copyright";
+  string msg = "Enter Copyright Year";
+  string copyright;
+
+  copyright = Dialogs::input(msg, dialog_title);
+
+  return copyright;
+}
+
+string View::get_isbn() {
+  string dialog_title = "Title";
+  string msg = "Enter ISBN";
+  string isbn;
+
+  isbn = Dialogs::input(msg, dialog_title);
+
+  return isbn;
+}
+
+// Add patron methods
+
+string View::get_patron_name() {
+  string dialog_title = "Name";
+  string msg = "Enter Name";
+  string name;
+
+  name = Dialogs::input(msg, dialog_title);
+
+  return name;
+}
+
+string View::get_patron_phone_number() {
+  string dialog_title = "Phone Number";
+  string msg = "Enter Phone Number";
+  string number;
+
+  number = Dialogs::input(msg, dialog_title);
+
+  return number;
+}

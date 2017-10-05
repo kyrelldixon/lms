@@ -24,14 +24,11 @@ void Controller::execute_cmd(int cmd) {
     string title, author, copyright, isbn;
     int genre, media, age;
 
-    cout << "Title? ";
-    getline(cin, title);
+    title = view.get_title();
 
-    cout << "Author? ";
-    getline(cin, author);
+    author = view.get_author();
 
-    cout << "Copyright date? ";
-    getline(cin, copyright);
+    copyright = view.get_copyright();
 
     for (int i = 0; i < Genre::num_genres; ++i) 
       cout << "  " << i << ") " << Genre(i).to_string() << endl;
@@ -51,8 +48,7 @@ void Controller::execute_cmd(int cmd) {
     cin >> age;
     cin.ignore(); // consume \n
 
-    cout << "ISBN? ";
-    getline(cin, isbn);
+    isbn = view.get_isbn();
 
     library.add_publication(Publication(title, author, copyright, genre, media, age, isbn));
 
@@ -81,10 +77,8 @@ void Controller::execute_cmd(int cmd) {
  } else if (cmd == 5) { // Add patron
     string name, number;
 
-    cout << "Name? ";
-    getline(cin, name);
-    cout << "Phone number? ";
-    getline(cin, number);
+    name = view.get_patron_name();
+    number = view.get_patron_phone_number();
     library.add_patron(Patron(name, number));
     
  } else if (cmd == 6) { // List all patrons
